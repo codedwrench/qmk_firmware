@@ -1,5 +1,5 @@
 /*
-Copyright 2019 Danny Nguyen <danny@keeb.io>
+Copyright 2012 Jun Wako <wakojun@gmail.com>
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -15,10 +15,31 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#pragma once
+#ifndef CONFIG_H
+#define CONFIG_H
 
 #include "config_common.h"
 
-#define PERMISSIVE_HOLD
-#define IGNORE_MOD_TAP_INTERRUPT
-#define TAPPING_TERM 500
+/* USB Device descriptor parameter */
+#define VENDOR_ID       0xC0DE
+#define PRODUCT_ID      0xD001
+#define DEVICE_VER 		0x0001
+#define MANUFACTURER    CodedWrench
+#define PRODUCT         CodedPad
+#define DESCRIPTION     CodedWrench KeyPad 
+
+/* key matrix size */
+#define MATRIX_ROWS 3
+#define MATRIX_COLS 4
+
+/* CodedPad PCB default pin-out */
+#define MATRIX_ROW_PINS { D0, D4, C6 }
+#define MATRIX_COL_PINS { F4, F7, F6, F5 }
+#define UNUSED_PINS
+
+/* COL2ROW or ROW2COL */
+#define DIODE_DIRECTION ROW2COL
+
+#define TAPPING_TERM 200
+
+#endif
