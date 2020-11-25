@@ -78,7 +78,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* LAYER 2
  * ,---------------------------.
- * |  F21  | F22  | F23 | TAB  |
+ * |  F21  |ENTER | FP  | TAB  |
  * |-------+------+-----+------|
  * |  F17  | F18  | F19 | F20  |
  * |-------+------+-----+------|
@@ -86,9 +86,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `---------------------------'
  */
 [2] = LAYOUT( \
-  KC_F21,         KC_F22,  FILL_PASSWORD,   KC_TAB,    \
-  KC_F17,         KC_F18,  KC_F19,               KC_F20,     \
-  KC_F13,         KC_F14,  TD(1),                KC_F16     \
+  KC_F21,         KC_ENTER,  FILL_PASSWORD,        KC_TAB,    \
+  KC_F17,         KC_F18,    KC_F19,               KC_F20,     \
+  KC_F13,         KC_F14,    TD(1),                KC_F16     \
 ),
 
 /* LAYER 3 - Gaming (keyboard mode)
