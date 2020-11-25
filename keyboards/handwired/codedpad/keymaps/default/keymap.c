@@ -1,4 +1,5 @@
 #include QMK_KEYBOARD_H
+#include "donotcommit.h"
 
 typedef struct {
     bool is_press_action;
@@ -15,6 +16,10 @@ static tap lalttap_state = {
 static tap f15tap_state = {
     .is_press_action = true,
     .state = 0
+};
+
+enum custom_keycodes {
+   FILL_PASSWORD = SAFE_RANGE,
 };
 
 // Define a type for as many tap dance states as you need
@@ -73,7 +78,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* LAYER 2
  * ,---------------------------.
- * |  F21  | F22  | F23 | F24  |
+ * |  F21  | F22  | F23 | TAB  |
  * |-------+------+-----+------|
  * |  F17  | F18  | F19 | F20  |
  * |-------+------+-----+------|
@@ -81,9 +86,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `---------------------------'
  */
 [2] = LAYOUT( \
-  KC_F21,         KC_F22,  KC_F23,   KC_F24,    \
-  KC_F17,         KC_F18,  KC_F19,   KC_F20,     \
-  KC_F13,         KC_F14,  TD(1),	 KC_F16     \
+  KC_F21,         KC_F22,  FILL_PASSWORD,   KC_TAB,    \
+  KC_F17,         KC_F18,  KC_F19,               KC_F20,     \
+  KC_F13,         KC_F14,  TD(1),                KC_F16     \
 ),
 
 /* LAYER 3 - Gaming (keyboard mode)
@@ -178,4 +183,17 @@ qk_tap_dance_action_t tap_dance_actions[] = {
         [0] = ACTION_TAP_DANCE_DOUBLE(KC_KP_0, KC_BSPC),
         [1] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, f15_finished, f15_reset),
         [2] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, alt_finished, alt_reset),
+};		
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+    case FILL_PASSWORD:
+        if (record->event.pressed) {
+            // when keycode FILL_PASSWORD is pressed
+            SEND_STRING(PW);
+        } else {
+        }
+        break;
+    }
+    return true;
 };
